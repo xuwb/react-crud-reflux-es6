@@ -1,12 +1,15 @@
 "use strict";
 define(function(require, exports, module){
 
-    const React = require('react');
-    const ReactDOM = require('reactDom');
-    const Container = require('./container');
+    const React = require('react'),
+          ReactDOM = require('reactDom'),
+          DataTable = require('./dataTable'),
+          InfoBox = require('./infoBox');
 
     ReactDOM.render(
-        <Container />, 
+        <div>
+            <DataTable />
+        </div>, 
         document.getElementById('main')
     )
 });

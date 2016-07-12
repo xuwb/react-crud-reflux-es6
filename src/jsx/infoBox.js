@@ -9,31 +9,47 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 define(function (require, exports, module) {
-
     var React = require('react');
 
-    var Container = function (_React$Component) {
-        _inherits(Container, _React$Component);
+    var InfoBox = function (_React$Component) {
+        _inherits(InfoBox, _React$Component);
 
-        function Container() {
-            _classCallCheck(this, Container);
+        function InfoBox() {
+            _classCallCheck(this, InfoBox);
 
-            return _possibleConstructorReturn(this, Object.getPrototypeOf(Container).apply(this, arguments));
+            return _possibleConstructorReturn(this, Object.getPrototypeOf(InfoBox).apply(this, arguments));
         }
 
-        _createClass(Container, [{
-            key: "render",
+        _createClass(InfoBox, [{
+            key: 'render',
             value: function render() {
                 return React.createElement(
-                    "div",
+                    'tfoot',
                     null,
-                    "Hello World!"
+                    React.createElement(
+                        'tr',
+                        null,
+                        React.createElement(
+                            'td',
+                            null,
+                            React.createElement('input', { id: 'inputName', type: 'text' })
+                        ),
+                        React.createElement(
+                            'td',
+                            null,
+                            React.createElement(
+                                'button',
+                                { className: 'JS_addBtn btn btn-default' },
+                                '添加'
+                            )
+                        )
+                    )
                 );
             }
         }]);
 
-        return Container;
+        return InfoBox;
     }(React.Component);
 
-    return Container;
+    return InfoBox;
 });
