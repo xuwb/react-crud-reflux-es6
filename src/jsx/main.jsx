@@ -8,6 +8,7 @@ define(function(require, exports, module){
 
     ReactDOM.render(
         <div>
+            <h3 style={{text-align:'center'}}>React ES6 Demo</h3>
             <DataTable />
         </div>, 
         document.getElementById('main')

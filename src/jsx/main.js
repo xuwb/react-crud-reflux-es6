@@ -10,6 +10,11 @@ define(function (require, exports, module) {
     ReactDOM.render(React.createElement(
         'div',
         null,
+        React.createElement(
+            'h3',
+            { style: { textAlign: 'center' } },
+            'React ES6 Demo'
+        ),
         React.createElement(DataTable, null)
     ), document.getElementById('main'));
 });

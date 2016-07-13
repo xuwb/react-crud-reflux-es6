@@ -5,7 +5,7 @@
             'jquery'  : 'build/jquery-1.11.2',
             'react'   : 'build/react-15.2.1/build/react',
             'reactDom': 'build/react-15.2.1/build/react-dom',
-            'reflux'  : 'build/reflux',
+            'reflux'  : 'build/reflux.min',
             'init'    : 'jsx/main'
         },
         debug: true,
