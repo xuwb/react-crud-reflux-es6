@@ -12,6 +12,7 @@ define(function (require, exports, module) {
 
     var React = require('react'),
         Reflux = require('reflux'),
+        Hoc = require('./hoc'),
         InfoBox = require('./infoBox');
 
     // var actions = Reflux.createActions([
@@ -47,18 +48,13 @@ define(function (require, exports, module) {
         function DataTable(props) {
             _classCallCheck(this, DataTable);
 
-            var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(DataTable).call(this, props));
-
-            _this.state = {
-                data: [{ "id": 1, "name": "xuwb" }, { "id": 2, "name": "jack" }, { "id": 3, "name": "tom" }, { "id": 4, "name": "bean" }]
-            };
-            return _this;
+            return _possibleConstructorReturn(this, Object.getPrototypeOf(DataTable).call(this, props));
         }
 
         _createClass(DataTable, [{
             key: 'render',
             value: function render() {
-                var list = this.state.data.map(function (val, index) {
+                var list = this.props.data.map(function (val, index) {
                     return React.createElement(
                         'tr',
                         { key: val.id },
@@ -117,5 +113,5 @@ define(function (require, exports, module) {
         return DataTable;
     }(React.Component);
 
-    return DataTable;
+    return Hoc(DataTable);
 });

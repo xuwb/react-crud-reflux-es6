@@ -4,6 +4,7 @@ define(function(require, exports, module) {
 
     const React = require('react'),
           Reflux = require('reflux'),
+          Hoc = require('./hoc'),
           InfoBox = require('./infoBox');
 
     
@@ -40,14 +41,8 @@ define(function(require, exports, module) {
         constructor(props) {
             super(props);
         }
-        state = {
-            data: [{"id": 1, "name": "xuwb"}, 
-                    {"id": 2, "name": "jack"}, 
-                    {"id": 3, "name": "tom"}, 
-                    {"id": 4, "name": "bean"}]
-        }
         render() {
-            let list = this.state.data.map((val, index) => {
+            let list = this.props.data.map((val, index) => {
                 return (
                     <tr key={val.id}>
                         <td>{val.name}</td>
@@ -74,5 +69,5 @@ define(function(require, exports, module) {
             )
         }
     }
-    return DataTable;
+    return Hoc(DataTable);
 });
