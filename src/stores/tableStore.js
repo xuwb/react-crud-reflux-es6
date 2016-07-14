@@ -6,14 +6,17 @@ define(function (require, exports, module) {
 
     return Reflux.createStore({
         listenables: [TableAction],
-        init: function init() {
-            this.onFetch();
+        store: [{ "id": 1, "name": "xuwb" }, { "id": 2, "name": "jack" }, { "id": 3, "name": "tom" }, { "id": 4, "name": "bean" }],
+        getInitialState: function getInitialState() {
+            return this.store;
         },
-        onFetch: function onFetch() {
-            var data = { data: [{ "id": 1, "name": "xuwb" }, { "id": 2, "name": "jack" }, { "id": 3, "name": "tom" }, { "id": 4, "name": "bean" }] };
-            this.trigger(data);
+        onAdd: function onAdd(item) {
+            this.store.push(item);
+
+            this.trigger(this.store, function () {
+                console.log('success');
+            });
         },
-        onAddd: function onAddd() {},
         onDelete: function onDelete() {}
     });
 });

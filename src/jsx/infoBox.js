@@ -9,18 +9,29 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 define(function (require, exports, module) {
-    var React = require('react');
+    var React = require('react'),
+        Action = require('actions/tableAction');
 
     var InfoBox = function (_React$Component) {
         _inherits(InfoBox, _React$Component);
 
-        function InfoBox() {
+        function InfoBox(props) {
             _classCallCheck(this, InfoBox);
 
-            return _possibleConstructorReturn(this, Object.getPrototypeOf(InfoBox).apply(this, arguments));
+            return _possibleConstructorReturn(this, Object.getPrototypeOf(InfoBox).call(this, props));
+            // this.clickHandler = this.clickHandler.bind(this);
         }
+        // clickHandler = e => {
+        //     console.log(this);
+        // }
+
 
         _createClass(InfoBox, [{
+            key: 'clickHandler',
+            value: function clickHandler() {
+                Action.add({ id: 22, name: 'tip' });
+            }
+        }, {
             key: 'render',
             value: function render() {
                 return React.createElement(
@@ -39,7 +50,7 @@ define(function (require, exports, module) {
                             null,
                             React.createElement(
                                 'button',
-                                { className: 'JS_addBtn btn btn-default' },
+                                { className: 'JS_addBtn btn btn-default', onClick: this.clickHandler.bind(this) },
                                 '添加'
                             )
                         )

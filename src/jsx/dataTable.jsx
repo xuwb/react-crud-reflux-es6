@@ -4,6 +4,7 @@ define(function(require, exports, module) {
 
     const React = require('react'),
           Reflux = require('reflux'),
+          Store =require('stores/tableStore'),
           Hoc = require('./hoc'),
           InfoBox = require('./infoBox');
 
@@ -69,5 +70,5 @@ define(function(require, exports, module) {
             )
         }
     }
-    return Hoc(DataTable);
+    return Hoc(DataTable, Store);
 });

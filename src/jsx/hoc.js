@@ -15,37 +15,38 @@ define(function (require, exports, module) {
         Reflux = require('reflux');
     var TableStore = require('stores/tableStore');
 
-    return function (Wraper) {
-        return function (_React$Component) {
+    return function (Wrapper, Store) {
+        Store = Reflux.connect(Store, "data");
+        var state = Store.getInitialState();
+        delete Store.getInitialState; // 以免覆盖 Hoc 中的 getInitialState 方法，不删除也能执行，会出现警告提示
+
+        var Hoc = function (_React$Component) {
             _inherits(Hoc, _React$Component);
 
             function Hoc(props) {
                 _classCallCheck(this, Hoc);
 
-                // this.state = {data: [{"id": 1, "name": "xuwb"},
-                //                    {"id": 2, "name": "jack"},
-                //                    {"id": 3, "name": "tom"},
-                //                    {"id": 4, "name": "bean"}]};
-
                 var _this = _possibleConstructorReturn(this, Object.getPrototypeOf(Hoc).call(this, props));
 
-                _this.store = Reflux.connect(TableStore, 'data');
+                _this.state = state;
                 return _this;
             }
 
             _createClass(Hoc, [{
-                key: 'componentDidMount',
-                value: function componentDidMount() {
-                    // return this.store.componentDidMount
-                }
-            }, {
                 key: 'render',
                 value: function render() {
-                    return React.createElement(Wraper, _extends({}, this.props, this.state));
+                    console.log(this.state);
+                    return React.createElement(Wrapper, _extends({}, this.props, this.state));
                 }
             }]);
 
             return Hoc;
         }(React.Component);
+        // 将Store的属性合并到Hoc.prototype。trigger方法才能生效
+
+
+        $.extend(Hoc.prototype, Store);
+        // console.log(Hoc.prototype);
+        return Hoc;
     };
 });

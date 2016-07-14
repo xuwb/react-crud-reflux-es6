@@ -3,21 +3,25 @@ define((require, exports, module) => {
           Reflux = require('reflux');
     const TableStore = require('stores/tableStore');
 
-    return (Wraper) => class Hoc extends React.Component {
-        constructor(props) {
-            super(props);
 
-            // this.state = {data: [{"id": 1, "name": "xuwb"}, 
-            //                    {"id": 2, "name": "jack"}, 
-            //                    {"id": 3, "name": "tom"}, 
-            //                    {"id": 4, "name": "bean"}]};
-            this.store = Reflux.connect(TableStore, 'data');
+    return (Wrapper, Store) => {
+        Store = Reflux.connect(Store, "data");
+        let state = Store.getInitialState();
+        delete Store.getInitialState;    // 以免覆盖 Hoc 中的 getInitialState 方法，不删除也能执行，会出现警告提示
+
+        class Hoc extends React.Component {
+            constructor(props) {
+                super(props);
+                this.state = state;
+            }
+            render() {
+                console.log(this.state);
+                return <Wrapper {...this.props} {...this.state} />
+            }
         }
-        componentDidMount() {
-            // return this.store.componentDidMount
-        }
-        render() {
-            return <Wraper {...this.props} {...this.state} />
-        }
+        // 将Store的属性合并到Hoc.prototype。trigger方法才能生效
+        $.extend(Hoc.prototype, Store);
+        // console.log(Hoc.prototype);
+        return Hoc;
     }
 })
