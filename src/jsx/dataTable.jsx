@@ -8,8 +8,6 @@ define(function(require, exports, module) {
           Hoc = require('./hoc'),
           InfoBox = require('./infoBox');
 
-    
-
     // var actions = Reflux.createActions([
     //   'hello',
     //   'greet',
@@ -42,14 +40,17 @@ define(function(require, exports, module) {
         constructor(props) {
             super(props);
         }
+        modifyClick(e) {
+            var id = e.target.getAttribute('data-id');
+        }
         render() {
             let list = this.props.data.map((val, index) => {
                 return (
                     <tr key={val.id}>
                         <td>{val.name}</td>
                         <td>
-                            <button className='JS_delBtn btn btn-primary' data-id=''>删除</button>
-                            <button className='JS_modBtn btn btn-info' data-id=''>修改</button>
+                            <button className='JS_delBtn btn btn-primary' data-id={val.id}>删除</button>
+                            <button className='JS_modBtn btn btn-info' data-id={val.id} onClick={this.modifyClick.bind(this)}>修改</button>
                         </td>
                     </tr>
                 )

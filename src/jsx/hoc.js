@@ -35,7 +35,7 @@ define(function (require, exports, module) {
             _createClass(Hoc, [{
                 key: 'render',
                 value: function render() {
-                    console.log(this.state);
+                    // console.log(this.state);
                     return React.createElement(Wrapper, _extends({}, this.props, this.state));
                 }
             }]);

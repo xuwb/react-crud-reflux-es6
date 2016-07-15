@@ -15,7 +15,7 @@ define((require, exports, module) => {
                 this.state = state;
             }
             render() {
-                console.log(this.state);
+                // console.log(this.state);
                 return <Wrapper {...this.props} {...this.state} />
             }
         }

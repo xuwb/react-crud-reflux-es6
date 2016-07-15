@@ -53,8 +53,15 @@ define(function (require, exports, module) {
         }
 
         _createClass(DataTable, [{
+            key: 'modifyClick',
+            value: function modifyClick(e) {
+                var id = e.target.getAttribute('data-id');
+            }
+        }, {
             key: 'render',
             value: function render() {
+                var _this2 = this;
+
                 var list = this.props.data.map(function (val, index) {
                     return React.createElement(
                         'tr',
@@ -69,12 +76,12 @@ define(function (require, exports, module) {
                             null,
                             React.createElement(
                                 'button',
-                                { className: 'JS_delBtn btn btn-primary', 'data-id': '' },
+                                { className: 'JS_delBtn btn btn-primary', 'data-id': val.id },
                                 '删除'
                             ),
                             React.createElement(
                                 'button',
-                                { className: 'JS_modBtn btn btn-info', 'data-id': '' },
+                                { className: 'JS_modBtn btn btn-info', 'data-id': val.id, onClick: _this2.modifyClick.bind(_this2) },
                                 '修改'
                             )
                         )
