@@ -20,7 +20,17 @@ define(function (require, exports, module) {
                 console.error('modify item error');
                 return;
             }
-            this.getRefsByName(infoBox, 'userName').focus();
+            // 循环拆解遍历获取input对象，设置焦点
+
+            var input = null;
+            this.getRefsByName(infoBox, function (ref) {
+                if (ref.key == 'userName') {
+                    input = ref.value;
+                    return false;
+                }
+            });
+            input && input.focus();
+
             // infoBox.focus();
             item.btnType = '修改';
             this.store = item;

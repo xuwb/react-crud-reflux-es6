@@ -5,10 +5,19 @@ define((require, exports, module) => {
     const Util = require('util');
 
     return Store({
-        store: [{"id": 1, "name": "xuwb"}, 
-                {"id": 2, "name": "jack"}, 
-                {"id": 3, "name": "tom"}, 
-                {"id": 4, "name": "bean"}],
+        // store: [{"id": 1, "name": "xuwb"}, 
+        //         {"id": 2, "name": "jack"}, 
+        //         {"id": 3, "name": "tom"}, 
+        //         {"id": 4, "name": "bean"}],
+        store: [],
+        init() {
+            var me = this;
+            Util.fetch('src/data.json').then(function(data) {
+                me.trigger(me.store = data);
+            }).catch(function(err) {
+                console.log(err);
+            });
+        },
         getInitialState() {
             return this.store;
         },

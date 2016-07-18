@@ -1,7 +1,7 @@
 'use strict';
 
 define(function(require, exports, module) {
-	// var Promise = require('./promise');
+	var Promise = require('./promise');
 
 	module.exports = {
 		
@@ -46,18 +46,30 @@ define(function(require, exports, module) {
 	            str += this.randomBy(10, 0);
 	        }
 	        return str;
+	    },
+	    objectSize: function(obj) {
+	    	var t = typeof obj;
+	    	if(t == 'string') return obj.length;
+	    	else if(t == 'object') {
+	    		var count = 0;
+	    		for(var val in obj) {
+	    			count++;
+	    		}
+	    		return count;
+	    	}
+	    	return false;
+	    },
+	    fetch: function(url) {
+	    	var promise = new Promise(function(resolve, reject) {
+	    		$.ajax({
+	    			url: url,
+	    			type: 'get',
+	    			dataType: 'json',
+	    			success: resolve,
+	    			error: reject
+	    		});
+	    	});
+	    	return promise;
 	    }
-	    // fetch: function(url) {
-	    // 	var promise = new Promise(function(resolve, reject) {
-	    // 		$.ajax({
-	    // 			url: url,
-	    // 			type: 'get',
-	    // 			dataType: 'json',
-	    // 			success: resolve,
-	    // 			error: reject
-	    // 		});
-	    // 	});
-	    // 	return promise;
-	    // }
 	}
 })

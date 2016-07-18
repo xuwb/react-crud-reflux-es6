@@ -23,7 +23,7 @@ define(function(require, exports, module) {
                     item = val;
                     return false;
                 }
-            })
+            });
             InfoAction.itemModify(item, this.refs.infoBox);
         }
         deleteClick = e => {
@@ -37,8 +37,8 @@ define(function(require, exports, module) {
                     <tr key={val.id}>
                         <td>{val.name}</td>
                         <td>
-                            <button className='JS_modBtn btn btn-info' data-id={val.id} onClick={this.modifyClick.bind(this)}>修改</button>
-                            <button className='JS_delBtn btn btn-primary' data-id={val.id} onClick={this.deleteClick}>删除</button>
+                            <button ref="btn_modify" className='JS_modBtn btn btn-info' data-id={val.id} onClick={this.modifyClick.bind(this)}>修改</button>
+                            <button ref="btn_delete" className='JS_delBtn btn btn-primary' data-id={val.id} onClick={this.deleteClick}>删除</button>
                         </td>
                     </tr>
                 )

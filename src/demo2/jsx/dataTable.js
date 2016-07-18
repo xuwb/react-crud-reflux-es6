@@ -68,12 +68,12 @@ define(function (require, exports, module) {
                             null,
                             React.createElement(
                                 'button',
-                                { className: 'JS_modBtn btn btn-info', 'data-id': val.id, onClick: _this2.modifyClick.bind(_this2) },
+                                { ref: 'btn_modify', className: 'JS_modBtn btn btn-info', 'data-id': val.id, onClick: _this2.modifyClick.bind(_this2) },
                                 '修改'
                             ),
                             React.createElement(
                                 'button',
-                                { className: 'JS_delBtn btn btn-primary', 'data-id': val.id, onClick: _this2.deleteClick },
+                                { ref: 'btn_delete', className: 'JS_delBtn btn btn-primary', 'data-id': val.id, onClick: _this2.deleteClick },
                                 '删除'
                             )
                         )

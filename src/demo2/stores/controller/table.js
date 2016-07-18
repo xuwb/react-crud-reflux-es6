@@ -6,7 +6,19 @@ define(function (require, exports, module) {
     var Util = require('util');
 
     return Store({
-        store: [{ "id": 1, "name": "xuwb" }, { "id": 2, "name": "jack" }, { "id": 3, "name": "tom" }, { "id": 4, "name": "bean" }],
+        // store: [{"id": 1, "name": "xuwb"},
+        //         {"id": 2, "name": "jack"},
+        //         {"id": 3, "name": "tom"},
+        //         {"id": 4, "name": "bean"}],
+        store: [],
+        init: function init() {
+            var me = this;
+            Util.fetch('src/data.json').then(function (data) {
+                me.trigger(me.store = data);
+            }).catch(function (err) {
+                console.log(err);
+            });
+        },
         getInitialState: function getInitialState() {
             return this.store;
         },
