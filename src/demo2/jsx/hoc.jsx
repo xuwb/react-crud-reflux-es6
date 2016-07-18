@@ -1,8 +1,6 @@
 define((require, exports, module) => {
     const React = require('react'),
           Reflux = require('reflux');
-    const TableStore = require('stores/tableStore');
-
 
     return (Wrapper, Store) => {
         Store = Reflux.connect(Store, "data");
@@ -16,7 +14,7 @@ define((require, exports, module) => {
             }
             render() {
                 // console.log(this.state);
-                return <Wrapper {...this.props} {...this.state} />
+                return <Wrapper ref="wrapper" {...this.props} {...this.state} />
             }
         }
         // 将Store的属性合并到Hoc.prototype。trigger方法才能生效

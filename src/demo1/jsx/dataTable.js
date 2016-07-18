@@ -12,7 +12,7 @@ define(function (require, exports, module) {
 
     var React = require('react'),
         Reflux = require('reflux'),
-        Store = require('stores/tableStore'),
+        Store = require('demo1/stores/tableStore'),
         Hoc = require('./hoc'),
         InfoBox = require('./infoBox');
 

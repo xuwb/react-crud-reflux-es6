@@ -13,7 +13,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 define(function (require, exports, module) {
     var React = require('react'),
         Reflux = require('reflux');
-    var TableStore = require('stores/tableStore');
+    var TableStore = require('demo1/stores/tableStore');
 
     return function (Wrapper, Store) {
         Store = Reflux.connect(Store, "data");

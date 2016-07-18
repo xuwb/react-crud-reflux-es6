@@ -2,7 +2,7 @@
 
 define(function (require, exports, module) {
     var Reflux = require('reflux'),
-        TableAction = require('actions/tableAction');
+        TableAction = require('demo1/actions/tableAction');
 
     return Reflux.createStore({
         listenables: [TableAction],

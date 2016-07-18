@@ -10,7 +10,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 define(function (require, exports, module) {
     var React = require('react'),
-        Action = require('actions/tableAction');
+        Action = require('demo1/actions/tableAction');
 
     var InfoBox = function (_React$Component) {
         _inherits(InfoBox, _React$Component);

@@ -4,7 +4,7 @@ define(function(require, exports, module) {
 
     const React = require('react'),
           Reflux = require('reflux'),
-          Store =require('stores/tableStore'),
+          Store =require('demo1/stores/tableStore'),
           Hoc = require('./hoc'),
           InfoBox = require('./infoBox');
 

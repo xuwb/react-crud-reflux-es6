@@ -1,7 +1,7 @@
 "use strict";
 define(function(require, exports, module) {
     var React = require('react'),
-        Action = require('actions/tableAction');
+        Action = require('demo1/actions/tableAction');
 
     class InfoBox extends React.Component {
         constructor(props) {
