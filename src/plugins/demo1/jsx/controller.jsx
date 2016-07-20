@@ -5,8 +5,7 @@
 define(function(require, exports, module) {
 	
 	// 依赖
-	const $ = require('$');
-	const Control = require('common/myReflux/control');
+	const Control = require('plugins/myReflux/control');
 
 	class Controller extends Control {
 		store = {

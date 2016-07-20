@@ -6,8 +6,7 @@
 define(function(require, exports, module) {
 
 	//依赖
-	var $ = require('$'),
-		MyWidget = require('common/myWidget'),
+	var MyWidget = require('common/myWidget'),
 		Modal = require('model/modal/main');
 
 	//类

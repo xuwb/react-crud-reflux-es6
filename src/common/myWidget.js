@@ -5,8 +5,7 @@
 define(function(require, exports) {
 
 	//依赖
-	var $ = require('$'),
-		Widget = require('widget'),
+	var Widget = require('widget'),
 		util = require('common/util'),
 		daparser = require('common/daparser'),
 		domUtil = require('common/domUtil');

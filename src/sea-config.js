@@ -1,4 +1,9 @@
 (function() {
+    var global = typeof window == 'undefined' ? {} : window;
+    global.CONFIG = global.CONFIG || {};
+    
+    var cdnHost = '//alinw.alicdn.com';
+
     var config = {
         base: '/src/',
         paths: {
@@ -15,6 +20,8 @@
             'react'    : 'build/react-15.2.1/build/react',
             'reactDom' : 'build/react-15.2.1/build/react-dom',
             'reflux'   : 'build/reflux.min',
+
+            '$'        : 'common/jQuery',
             //Base
             'base': "arale/base/1.1.1/base",
             //组件

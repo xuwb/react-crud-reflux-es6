@@ -35,16 +35,6 @@ define(function(require, exports, module) {
 				state = me.state;
 			state.isSubmit = true;
 		}
-		render(){
-			let me = this,
-				props = me.clearAttr();
-			console.log(props);
-			return (
-				<form {...props} ref="form" onSubmit={me.submit.bind(me)} >
-					{props.children}
-				</form>
-			);
-		}
 		// 初始化验证
 		initValidator(){
 			let me = this,
@@ -104,7 +94,16 @@ define(function(require, exports, module) {
 			"__specalAttr": ['onSubmit', 'onAjax', 'isAutoAjax', 'ajaxConfig'],
 			"action": './data.json'
 		}
-
+		render(){
+			let me = this,
+				props = me.clearAttr();
+			console.log(props);
+			return (
+				<form {...props} ref="form" onSubmit={me.submit.bind(me)} >
+					{props.children}
+				</form>
+			);
+		}
 	};
 
 	return View;

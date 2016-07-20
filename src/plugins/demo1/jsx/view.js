@@ -18,9 +18,9 @@ define(function (require, exports, module) {
 	var Actions = require('./controller').Actions;
 
 	// 非独立组件
-	var Form = require('reactModel/input/form');
-	var Text = require('reactModel/input/text');
-	var Button = require('reactModel/input/button');
+	var Form = require('../input/form');
+	var Text = require('../input/text');
+	var Button = require('../input/button');
 
 	var View = function (_React$Component) {
 		_inherits(View, _React$Component);

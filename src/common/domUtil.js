@@ -8,7 +8,7 @@ define(function(require, exports, module) {
 	/*--依赖--*/
 	var $ = require('$'), //JQ
 		util = require('common/util'),//工具类
-		limit = require('common/limit'),
+		limit = require('common/limit2.0'),
 		handlerbars = require('common/handlerbars'),//模板
 		Poploading = require('model/poploading/main');
 

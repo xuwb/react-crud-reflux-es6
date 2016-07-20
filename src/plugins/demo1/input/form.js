@@ -66,18 +66,6 @@ define(function (require, exports, module) {
 				    state = me.state;
 				state.isSubmit = true;
 			}
-		}, {
-			key: 'render',
-			value: function render() {
-				var me = this,
-				    props = me.clearAttr();
-				console.log(props);
-				return React.createElement(
-					'form',
-					_extends({}, props, { ref: 'form', onSubmit: me.submit.bind(me) }),
-					props.children
-				);
-			}
 			// 初始化验证
 
 		}, {
@@ -147,6 +135,18 @@ define(function (require, exports, module) {
 			}
 			// 属性
 
+		}, {
+			key: 'render',
+			value: function render() {
+				var me = this,
+				    props = me.clearAttr();
+				console.log(props);
+				return React.createElement(
+					'form',
+					_extends({}, props, { ref: 'form', onSubmit: me.submit.bind(me) }),
+					props.children
+				);
+			}
 		}]);
 
 		return View;

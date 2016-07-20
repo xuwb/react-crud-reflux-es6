@@ -30,5 +30,5 @@ define(function (require, exports, module) {
 		}]);
 
 		return myWidget;
-	}(require('common/myReflux/widget'));
+	}(require('plugins/myReflux/widget'));
 });

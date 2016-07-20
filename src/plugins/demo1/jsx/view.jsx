@@ -9,9 +9,9 @@ define(function(require, exports, module) {
 	const Actions = require('./controller').Actions;
 
 	// 非独立组件
-	const Form = require('reactModel/input/form');
-	const Text = require('reactModel/input/text');
-	const Button = require('reactModel/input/button');
+	const Form = require('../input/form');
+	const Text = require('../input/text');
+	const Button = require('../input/button');
 
 	class View extends React.Component {
 		render(){ 

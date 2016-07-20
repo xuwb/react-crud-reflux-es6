@@ -9,10 +9,9 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 
 define(function (require, exports, module) {
 
-	var ReactDOM = require('reactDOM');
+	var ReactDOM = require('reactDom');
 	var React = require('react');
 	var limit = require('common/limit2.0');
-	var $ = require('$');
 
 	var Widget = function () {
 		function Widget(config) {

@@ -14,8 +14,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 define(function (require, exports, module) {
 
 	// 依赖
-	var $ = require('$');
-	var Control = require('common/myReflux/control');
+	var Control = require('plugins/myReflux/control');
 
 	var Controller = function (_Control) {
 		_inherits(Controller, _Control);
@@ -37,7 +36,7 @@ define(function (require, exports, module) {
 		}
 
 		_createClass(Controller, [{
-			key: 'onHiddenTel',
+			key: "onHiddenTel",
 			value: function onHiddenTel(e) {
 				var me = this,
 				    store = me.store;
@@ -45,7 +44,7 @@ define(function (require, exports, module) {
 				me.updateComponent();
 			}
 		}, {
-			key: 'onShowTel',
+			key: "onShowTel",
 			value: function onShowTel() {
 				var me = this,
 				    store = me.store;

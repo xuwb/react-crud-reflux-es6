@@ -1,7 +1,7 @@
 'use strict';
 
 define(function(require, exports, module) {
-	var Promise = require('./promise');
+	var limit = require('./limit2.0');
 
 	//变量
 	var util = {},
@@ -59,7 +59,7 @@ define(function(require, exports, module) {
 			}
 		},
 		//遍历数组
-		breakEachArr = function(arr, callback, context){
+		breakEachArr: function(arr, callback, context){
 			var index = 0,
 				length = arr.length;
 			for(; index < length; index++){
@@ -121,7 +121,6 @@ define(function(require, exports, module) {
 		//formatMoney
 	    formatMoney: function(NUM, MED){
 	       var REX = /(\d{1,3})(?=(\d{3})+(?:$|\.))/g;
-	       };
 	       return (+NUM).toFixed(~~MED).replace(REX, '$1,');
 	    },
 		// obj:      时间字符串
@@ -167,7 +166,7 @@ define(function(require, exports, module) {
 	        return str;
 	    },
 	    fetch: function(url) {
-	    	var promise = new Promise(function(resolve, reject) {
+	    	var promise = new limit.promise(function(resolve, reject) {
 	    		$.ajax({
 	    			url: url,
 	    			type: 'get',
