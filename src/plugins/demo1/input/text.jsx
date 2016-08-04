@@ -7,31 +7,26 @@ define(function(require, exports, module) {
 	// 依赖
 	const React = require('react');
 	const limit = require('common/limit2.0');
+	const bus = require('../assets/js/bus');
 
 	// 
 	class View extends React.Component {
 		clearAttr(){
 			let me = this,
-				props = me.props;
-			return limit.compose( (props) => {
-				limit.each(props.__specalAttr, (val) => {
-					delete props[val]
-				});
-				delete props.__specalAttr;
-				return props;
-			}, (props) => {
-				return limit.map(props, (val, key) => {
+				props = me.props; 
+			return bus.propsPreset(props, (props) => {
+				return limit.map(props, function (val, key) {
 					if(key === 'style'){
-						return limit.assign({
-							marginRight: '0px',
-							width: props.width,
-							height: props.height,
-							boxSizing: 'border-box'
-						}, val);
-					};
-					return val;
-				});
-			})(props);
+	                    val = limit.assign({
+	                        marginRight: '0px',
+	                        width: props.width,
+	                        height: props.height,
+	                        boxSizing: 'border-box'
+	                    }, val);
+	                };
+	                return val;
+	            });
+			});
 		}
 		render(){ 
 			let me = this,

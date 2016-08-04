@@ -21,6 +21,7 @@ define(function (require, exports, module) {
 	var limit = require('common/limit2.0');
 	var domUtil = require('common/domUtil');
 	var Ajax = require('model/ajax/main');
+	var bus = require('../assets/js/bus');
 
 	//
 
@@ -49,15 +50,9 @@ define(function (require, exports, module) {
 			value: function clearAttr() {
 				var me = this,
 				    props = me.props;
-				return limit.compose(function (props) {
-					limit.each(props.__specalAttr, function (val) {
-						delete props[val];
-					});
-					delete props.__specalAttr;
-					return props;
-				}, function (props) {
+				return bus.propsPreset(props, function (props) {
 					return limit.assign({}, props);
-				})(props);
+				});
 			}
 		}, {
 			key: 'submit',
@@ -140,7 +135,6 @@ define(function (require, exports, module) {
 			value: function render() {
 				var me = this,
 				    props = me.clearAttr();
-				console.log(props);
 				return React.createElement(
 					'form',
 					_extends({}, props, { ref: 'form', onSubmit: me.submit.bind(me) }),

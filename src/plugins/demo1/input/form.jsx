@@ -10,6 +10,7 @@ define(function(require, exports, module) {
 	const limit = require('common/limit2.0');
 	const domUtil = require('common/domUtil');
 	const Ajax = require('model/ajax/main');
+	const bus = require('../assets/js/bus');
 
 	// 
 	class View extends React.Component {
@@ -20,15 +21,7 @@ define(function(require, exports, module) {
 		clearAttr(){
 			let me = this,
 				props = me.props;
-			return limit.compose( (props) => {
-				limit.each(props.__specalAttr, (val) => {
-					delete props[val]
-				});
-				delete props.__specalAttr;
-				return props;
-			}, (props) => {
-				return limit.assign({}, props);
-			})(props);
+			return bus.propsPreset(props, (props) => limit.assign({}, props));
 		}
 		submit(){
 			let me = this,
@@ -97,7 +90,6 @@ define(function(require, exports, module) {
 		render(){
 			let me = this,
 				props = me.clearAttr();
-			console.log(props);
 			return (
 				<form {...props} ref="form" onSubmit={me.submit.bind(me)} >
 					{props.children}

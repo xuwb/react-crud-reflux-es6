@@ -16,6 +16,7 @@ define(function (require, exports, module) {
 	// 依赖
 	var React = require('react');
 	var limit = require('common/limit2.0');
+	var bus = require('../assets/js/bus');
 
 	//
 
@@ -33,16 +34,10 @@ define(function (require, exports, module) {
 			value: function clearAttr() {
 				var me = this,
 				    props = me.props;
-				return limit.compose(function (props) {
-					limit.each(props.__specalAttr, function (val) {
-						delete props[val];
-					});
-					delete props.__specalAttr;
-					return props;
-				}, function (props) {
+				return bus.propsPreset(props, function (props) {
 					return limit.map(props, function (val, key) {
 						if (key === 'style') {
-							return limit.assign({
+							val = limit.assign({
 								marginRight: '0px',
 								width: props.width,
 								height: props.height,
@@ -51,7 +46,7 @@ define(function (require, exports, module) {
 						};
 						return val;
 					});
-				})(props);
+				});
 			}
 		}, {
 			key: 'render',
